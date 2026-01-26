@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Spring Boot parent provides dependency management and default plugin configuration -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.1</version>
+    </parent>
+
+    <groupId>com.github.maratmingazov</groupId>
+    <artifactId>widgets-mcp-server</artifactId>
+    <version>1.0.0</version>
+
+    <!-- Application metadata -->
+    <name>widgets-mcp-server</name>
+    <description>Widgets MCP Server</description>
+
+    <properties>
+        <!-- Application name (can be reused in configs) -->
+        <app.name>${project.artifactId}</app.name>
+        <!-- Java version used for compilation and runtime -->
+        <java.version>17</java.version>
+    </properties>
+
+    <!-- Spring profiles configuration -->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>stand</id>
+            <properties>
+                <spring.profiles.active>stand</spring.profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-mcp-server-spring-boot-starter</artifactId>
+            <version>1.0.0-M6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>7.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+
+
+        <!-- Lombok:
+             - Reduces boilerplate code (getters, constructors, builders, etc.)
+             - 'provided' because Lombok is only needed at compile time
+        -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.40</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- Spring Boot Maven Plugin:
+                 - Packages the application as an executable JAR
+                 - Enables 'mvn spring-boot:run'
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- Maven Compiler Plugin:
+                 - Configures Java source and target compatibility
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
