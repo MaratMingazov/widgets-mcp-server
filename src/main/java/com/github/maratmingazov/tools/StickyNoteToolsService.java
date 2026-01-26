@@ -3,6 +3,7 @@ package com.github.maratmingazov.tools;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -11,6 +12,7 @@ import org.springframework.web.client.RestClient;
 @RequiredArgsConstructor
 public class StickyNoteToolsService {
 
+    @Qualifier("stickyNoteRestClient")
     private final RestClient restClient;
 
 
