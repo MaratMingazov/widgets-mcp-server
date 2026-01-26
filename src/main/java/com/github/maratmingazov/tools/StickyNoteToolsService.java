@@ -1,6 +1,5 @@
 package com.github.maratmingazov.tools;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
@@ -15,7 +14,7 @@ public class StickyNoteToolsService {
     private final RestClient restClient;
 
 
-    @Tool(name = "createSticky", description = "create a sticky note widget (sticker) on a miro board")
+    @Tool(name = "create StickyNote", description = "create a sticky note widget (sticker) on a miro board")
     public Response createStickyNote(
             @ToolParam(description = "Miro board key for a sticker creation", required = true) String boardKey,
             @ToolParam(description = "The text to be displayed on the sticker", required = true) String text,
@@ -32,6 +31,16 @@ public class StickyNoteToolsService {
                 .body(Response.class);
     }
 
+    @Tool(name = "delete StickyNote", description = "delete a sticky note widget (sticker) on a miro board")
+    public void deleteStickyNote(
+            @ToolParam(description = "Miro board key for a sticker creation", required = true) String boardKey,
+            @ToolParam(description = "StickyNote id for deletion", required = true) Long stickyNoteId
+    ) {
+        restClient.delete()
+                .uri("/stickyNote?boardKey={boardKey}&widgetId={stickyNoteId}", boardKey, stickyNoteId)
+                .retrieve()
+                .toBodilessEntity();
+    }
 
 
     record Request(String boardKey, String text, Integer x, Integer y) {}
