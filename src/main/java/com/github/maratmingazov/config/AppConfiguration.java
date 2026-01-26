@@ -1,6 +1,7 @@
 package com.github.maratmingazov.config;
 
 
+import com.github.maratmingazov.tools.AuditLogsToolsService;
 import com.github.maratmingazov.tools.StickyNoteToolsService;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
@@ -33,9 +34,9 @@ public class AppConfiguration {
     }
 
     @Bean
-    public ToolCallbackProvider tools(StickyNoteToolsService stickyNoteToolsService) {
+    public ToolCallbackProvider tools(StickyNoteToolsService stickyNoteToolsService, AuditLogsToolsService auditLogsToolsService) {
         return MethodToolCallbackProvider.builder()
-                .toolObjects(stickyNoteToolsService)
+                .toolObjects(stickyNoteToolsService, auditLogsToolsService)
                 .build();
     }
 }

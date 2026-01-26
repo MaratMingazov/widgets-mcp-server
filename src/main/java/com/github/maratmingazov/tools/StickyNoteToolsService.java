@@ -1,6 +1,5 @@
 package com.github.maratmingazov.tools;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,11 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 @Service
-@RequiredArgsConstructor
 public class StickyNoteToolsService {
 
-    @Qualifier("stickyNoteRestClient")
+
     private final RestClient restClient;
+
+    public StickyNoteToolsService(@Qualifier("stickyNoteRestClient") RestClient restClient) {
+        this.restClient = restClient;
+    }
 
 
     @Tool(name = "create StickyNote", description = "create a sticky note widget (sticker) on a miro board")
