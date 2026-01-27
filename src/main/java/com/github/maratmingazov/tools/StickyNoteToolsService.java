@@ -18,7 +18,7 @@ public class StickyNoteToolsService {
     }
 
 
-    @Tool(name = "create StickyNote", description = "create a sticky note widget (sticker) on a miro board")
+    @Tool(name = "createStickyNote", description = "create a sticky note widget (sticker) on a miro board")
     public Response createStickyNote(
             @ToolParam(description = "Miro board key for a sticker creation", required = true) String boardKey,
             @ToolParam(description = "The text to be displayed on the sticker", required = true) String text,
@@ -35,7 +35,7 @@ public class StickyNoteToolsService {
                 .body(Response.class);
     }
 
-    @Tool(name = "delete StickyNote", description = "delete a sticky note widget (sticker) on a miro board")
+    @Tool(name = "deleteStickyNote", description = "delete a sticky note widget (sticker) on a miro board")
     public void deleteStickyNote(
             @ToolParam(description = "Miro board key for a sticker creation", required = true) String boardKey,
             @ToolParam(description = "StickyNote id for deletion", required = true) Long stickyNoteId

@@ -17,7 +17,7 @@ public class AuditLogsToolsService {
         this.restClient = restClient;
     }
 
-    @Tool(name = "get audit logs", description = "retrieve audit logs for a miro board with pagination")
+    @Tool(name = "getAuditLogs", description = "retrieve audit logs for a miro board with pagination")
     public AuditLogsResponse getAuditLogs(
             @ToolParam(description = "Miro board key for audit logs retrieval", required = true) String boardKey,
             @ToolParam(description = "Offset for pagination (starting from 1)", required = false) Integer offset,
