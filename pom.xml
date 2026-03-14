@@ -25,25 +25,6 @@
         <java.version>17</java.version>
     </properties>
 
-    <!-- Spring profiles configuration -->
-    <profiles>
-        <profile>
-            <id>dev</id>
-            <properties>
-                <spring.profiles.active>dev</spring.profiles.active>
-            </properties>
-        </profile>
-        <profile>
-            <id>stand</id>
-            <properties>
-                <spring.profiles.active>stand</spring.profiles.active>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-    </profiles>
-
     <dependencies>
 
         <dependency>
